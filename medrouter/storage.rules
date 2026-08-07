@@ -1,0 +1,40 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // ================================
+    // Incident Photos (EMS cases)
+    // ================================
+    match /incidentPhotos/{caseId}/{fileName} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+    }
+
+    // ================================
+    // Driver License Uploads
+    // ================================
+    match /driverLicenses/{userId}/{fileName} {
+
+      // Read: driver can read their own license
+      allow read: if request.auth != null
+        && request.auth.uid == userId;
+
+      // Write: driver can upload their own license (5MB max, image or PDF)
+      allow write: if request.auth != null
+        && request.auth.uid == userId
+        && request.resource.size < 5 * 1024 * 1024
+        && (
+          request.resource.contentType.matches('image/.*') ||
+          request.resource.contentType == 'application/pdf'
+        );
+    }
+
+    // ================================
+    // Default DENY (important)
+    // ================================
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
