@@ -1,0 +1,20 @@
+{
+  "id": "framingham_risk_score",
+  "name": "Framingham Risk Score",
+  "version": "2026.04",
+  "aliases": ["Framingham Risk Score", "Framingham"],
+  "summary": "Cardiovascular risk interpretation emphasizing age, sex, smoking, and related cardiometabolic factors.",
+  "organ_targets": ["heart", "kidneys", "brain"],
+  "citations": [
+    {
+      "title": "Risks to Heart Health",
+      "organization": "NHLBI",
+      "url": "https://www.nhlbi.nih.gov/health/heart-healthy-living/risks"
+    }
+  ],
+  "evidence_map": {
+    "heart": ["age", "sex", "smoking", "activity", "bmi"],
+    "kidneys": ["cardiometabolic_overlap"],
+    "brain": ["vascular_overlap"]
+  }
+}

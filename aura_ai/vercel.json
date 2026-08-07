@@ -1,0 +1,36 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/index.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "frontend/aura-health/package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/v1/(.*)",
+      "dest": "api/index.py"
+    },
+    {
+      "src": "/auth/(.*)",
+      "dest": "api/index.py"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/frontend/aura-health/dist/assets/$1"
+    },
+    {
+      "src": "/index.html",
+      "dest": "/frontend/aura-health/dist/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/aura-health/dist/index.html"
+    }
+  ]
+}

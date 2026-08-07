@@ -1,0 +1,20 @@
+{
+  "id": "cdc_sleep_health",
+  "name": "CDC Sleep Health",
+  "version": "2026.04",
+  "aliases": ["CDC Sleep Health", "Sleep Health"],
+  "summary": "Sleep guidance highlighting that adults generally need seven or more hours of sleep for better health.",
+  "organ_targets": ["brain", "heart", "liver"],
+  "citations": [
+    {
+      "title": "Are You Getting Enough Sleep?",
+      "organization": "CDC",
+      "url": "https://www.cdc.gov/sleep/about_sleep/how_much_sleep.html"
+    }
+  ],
+  "evidence_map": {
+    "brain": ["sleep_duration", "recovery"],
+    "heart": ["sleep_duration", "stress_load"],
+    "liver": ["sleep_metabolic_overlap"]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "who_bmi_activity",
+  "name": "WHO BMI-Activity",
+  "version": "2026.04",
+  "aliases": ["WHO BMI-Activity", "WHO BMI Activity"],
+  "summary": "Framework linking BMI category and physical inactivity to longer-term disease burden.",
+  "organ_targets": ["heart", "liver", "kidneys", "brain"],
+  "citations": [
+    {
+      "title": "Obesity and Overweight",
+      "organization": "World Health Organization",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight"
+    }
+  ],
+  "evidence_map": {
+    "heart": ["bmi", "activity"],
+    "liver": ["bmi", "metabolic_load"],
+    "kidneys": ["bmi", "metabolic_load"],
+    "brain": ["activity"]
+  }
+}

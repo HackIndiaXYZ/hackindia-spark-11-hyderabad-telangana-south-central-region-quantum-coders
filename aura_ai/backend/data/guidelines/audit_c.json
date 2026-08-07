@@ -1,0 +1,20 @@
+{
+  "id": "audit_c",
+  "name": "AUDIT-C",
+  "version": "2026.04",
+  "aliases": ["AUDIT-C", "AUDIT C"],
+  "summary": "Alcohol screening framework for identifying drinking patterns that increase health risk.",
+  "organ_targets": ["liver", "brain", "heart"],
+  "citations": [
+    {
+      "title": "The AUDIT-C Questions",
+      "organization": "U.S. Department of Veterans Affairs",
+      "url": "https://www.hepatitis.va.gov/alcohol/treatment/audit-c.asp"
+    }
+  ],
+  "evidence_map": {
+    "liver": ["alcohol_pattern", "weekly_limit"],
+    "brain": ["alcohol_pattern", "sleep_interaction"],
+    "heart": ["metabolic_interaction"]
+  }
+}

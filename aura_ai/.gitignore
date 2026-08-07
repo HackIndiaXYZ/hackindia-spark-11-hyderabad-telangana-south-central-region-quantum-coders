@@ -1,0 +1,40 @@
+# Environments
+.env
+*.env
+.env.*
+
+# Dependencies
+node_modules/
+backend/__pycache__/
+backend/app/__pycache__/
+backend/app/reasoning_engine/__pycache__/
+backend/app/knowledge_store/__pycache__/
+backend/app/pdf_ingestion/__pycache__/
+backend/app/auth/__pycache__/
+backend/app/storage/__pycache__/
+__pycache__/
+
+# Frontend build
+frontend/aura-health/dist/
+frontend/aura-health/build/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project specific data
+backend/data/uploads/*
+!backend/data/uploads/.gitkeep
+backend/scratch/
+backend/data/db/
+
+# OS files
+.DS_Store
+Thumbs.db

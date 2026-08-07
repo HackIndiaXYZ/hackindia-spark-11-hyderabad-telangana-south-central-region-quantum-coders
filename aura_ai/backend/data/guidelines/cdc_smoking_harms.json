@@ -1,0 +1,21 @@
+{
+  "id": "cdc_smoking_harms",
+  "name": "CDC Smoking Harms",
+  "version": "2026.04",
+  "aliases": ["CDC Smoking Harms", "Smoking Harms"],
+  "summary": "Smoking-related harm guidance covering cardiovascular, lung, kidney, and brain effects.",
+  "organ_targets": ["lungs", "heart", "kidneys", "brain"],
+  "citations": [
+    {
+      "title": "Health Effects of Cigarette Smoking",
+      "organization": "CDC",
+      "url": "https://www.cdc.gov/tobacco/about/cigarettes-and-smoking/health-effects.html"
+    }
+  ],
+  "evidence_map": {
+    "lungs": ["smoking"],
+    "heart": ["smoking", "vascular_overlap"],
+    "kidneys": ["smoking", "vascular_overlap"],
+    "brain": ["smoking", "vascular_overlap"]
+  }
+}

@@ -1,0 +1,14 @@
+[project]
+name = "digital-twin-health-ai"
+version = "0.1.0"
+description = "Reasoning engine for a human body digital twin simulator"
+requires-python = ">=3.12"
+
+[tool.pytest.ini_options]
+testpaths = ["backend/tests", "tests"]
+pythonpath = [".", "backend"]
+
+[tool.pyright]
+extraPaths = ["backend", "C:/Users/palar/AppData/Local/Programs/Python/Python312/Lib/site-packages"]
+reportMissingImports = false
+reportMissingModuleSource = false

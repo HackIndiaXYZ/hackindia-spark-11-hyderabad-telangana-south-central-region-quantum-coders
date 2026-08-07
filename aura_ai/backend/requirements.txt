@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+python-dotenv
+openai
+pydantic
+pydantic[email]
+pymongo
+pypdf
+PyJWT
+bcrypt
+requests
+python-multipart
+google-generativeai>=0.8.0

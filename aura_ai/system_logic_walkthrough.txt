@@ -1,0 +1,52 @@
+AURA HEALTH DIGITAL TWIN: SYSTEM ARCHITECTURE & TECHNICAL LOGIC
+
+1. CORE MODULES
+----------------
+
+A. INGESTION ENGINE (PDF -> Biological Data)
+Logic: 
+- Raw text is extracted using 'pypdf'.
+- An AI extraction agent identifies clinical biomarkers (HbA1c, Creatinine, etc.).
+- Data is normalized into a structured biological snapshot (JSON).
+
+B. SIMULATION ENGINE (Data -> 3D Visualization)
+Logic:
+- Maps JSON markers to organ meshes in a 3D model.
+- Uses Three.js to apply dynamic "Biometric Glass" materials.
+- High-risk organs throb with a faster emissive pulse.
+
+C. REASONING ENGINE (Narrative Analysis)
+Logic:
+- Multi-agent pipeline: One agent for clinical reasoning, one for empathetic coaching.
+- Grounded in personal medical history via RAG.
+
+2. NUMERICAL FORMULAS
+----------------------
+
+I. VITALITY SCORE
+Formula: Vitality = 100 - Clinical_Risk_Percentage
+Purpose: Pivots medical data from "risk-focused" to "health-focused."
+
+II. HEALTH GRADING (A-F)
+90-100: A+ (Exceptional)
+80-89: A (Optimal)
+70-79: B (Stable)
+60-69: C (Fair - Action Needed)
+50-59: D (Warning - High Stress)
+< 50: F (Critical - Intervention Needed)
+
+III. 3D GLOW INTENSITY
+Formula: Intensity = Base + (Risk * Pulse_Rate)
+Purpose: Visualizes organ stress levels in the simulator.
+
+3. AI & ML PIPELINE
+--------------------
+- INFERENCE: Cerebras (Ultra-fast reasoning).
+- LLM WRITING: OpenRouter (Claude-3.7/GPT-4o) for human narratives.
+- STORAGE: MongoDB for persistent biological trends and medical history.
+
+4. UI/UX PRINCIPLES
+--------------------
+- DARK MODE: Diagnostic focus with high-contrast glowing elements.
+- TRANSPARENCY: "Biometric Shell" logic to ensure internal organ visibility.
+- SYNC: Zustand-based global state for zero-latency data updates.

@@ -1,0 +1,82 @@
+AURA HEALTH: WORKING THEORY & MATHEMATICAL FOUNDATIONS
+
+1. OPS FETCHING: THE DATA PIPELINE
+----------------------------------
+The system operates on an "Asynchronous Event Loop" between the browser and the cloud:
+
+1. TRIGGER: User uploads a PDF (Frontend).
+2. OPS: Axios (Frontend) initiates a multipart POST request to the /v1/ingest-pdf endpoint.
+3. LOGIC: The Backend receives the stream, saves it to /data/uploads, and triggers the Extraction Thread.
+4. AI FETCH: The PDF Ingestion Service calls the LLM (Cerebras) with a schema-bound prompt.
+5. SYNC: The extracted JSON data is returned to the Frontend and instantly reflected in the 3D model via Zustand state synchronization.
+
+2. MATHEMATICAL FORMULAS: THE SIMULATION LOGIC
+----------------------------------------------
+
+A. VITALITY INDEX (Static Snapshot)
+The Vitality Index is a pivot of clinical risk into "Human Capacity."
+> Formula: V = 100 - (\u2211(Biomarker_Risk * Weighting))
+- Weighting (Heart) = (LDL_Risk * 0.6) + (BP_Risk * 0.4)
+- Weighting (Kidneys) = (HbA1c_Risk * 0.5) + (Creatinine_Risk * 0.5)
+
+B. HEALTH PROJECTION (Temporal Simulation)
+How we predict your health status in 5 years if no lifestyle changes are made.
+> Formula: Score(t) = S_initial * e^(-k * age_factor)
+- S_initial: Current Vitality Score.
+- k: Decay constant based on negative biomarkers (e.g., k increases if user is a smoker).
+- t: Time in years.
+- Result: A projected curve showing the "Cost of Inaction."
+
+C. 3D EMISSIVE FREQUENCY (Visual Math)
+Determines how fast an organ "pulses" in the simulator.
+> Formula: Hz = 0.5 + (Risk_Level / 10)
+- Low Risk (10%): 1.5Hz (Calm heartbeat).
+- High Risk (90%): 9.5Hz (Stress throb).
+
+3. KNOWLEDGE BASE & RAG (Retrieval Augmented Generation)
+--------------------------------------------------------
+The platform doesn't just "remember" your data; it builds a contextual profile.
+
+1. STORAGE: Every analyzed report is "chunked" and stored in MongoDB with biological tags (e.g., #cardiac, #renal).
+2. RETRIEVAL: When the user asks "How is my heart?", the Knowledge Store queries all documents tagged #cardiac from the last 12 months.
+3. CONTEXT: The system feeds these retrieved facts into the AI's "Context Window" before it generates a response, ensuring the answer is grounded in actual user history.
+
+4. THE ML PIPELINE: HYBRID INTELLIGENCE
+--------------------------------------
+The system uses a "Hybrid Intelligence" model, combining probabilistic Machine Learning (LLMs) with deterministic biological formulas.
+
+A. CLINICAL ENTITY EXTRACTION (NLP)
+Traditional OCR fails on complex medical tables. We use LLMs as a "Zero-Shot Entity Extractor."
+- Process: The model is fed the raw text and a strict Pydantic schema.
+- Task: It performs "NER" (Named Entity Recognition) to identify clinical values (e.g., '140/90 mmHg') and normalizes them into floats.
+- Reliability: By enforcing a JSON response format, we ensure the data is machine-readable for the 3D model.
+
+B. BIOLOGICAL REASONING (The Diagnostic Pass)
+We use a high-speed inference engine (Cerebras) to perform the first "Reasoning Pass."
+- Model: Llama-3-70B / Claude-3.7.
+- Logic: The model acts as a "Cross-Reference Engine," checking your specific markers against its vast clinical training set (including WHO and medical databases).
+- Output: The AI identifies "Biological Trends" (e.g., "Elevated LDL + High Age = Increased Atherosclerotic Risk").
+
+C. MULTI-AGENT NARRATIVE GENERATION
+To prevent the dashboard from feeling "robotic," we use two AI agents:
+1. Agent 1 (The Scientist): Calculates technical numbers and risks.
+2. Agent 2 (The Empathetic Coach): Rewrites Agent 1's output for the user. It uses "Tone Transfer" techniques to ensure the results are encouraging and actionable, not just scary percentages.
+
+D. SEMANTIC CONTEXTUALIZATION (RAG)
+Modern ML has a "Goldfish Memory." We solve this using RAG (Retrieval-Augmented Generation).
+- Storage: Your historical reports are stored as biological snapshots.
+- Query: Before the AI speaks, it pulls your last 3 snapshots to see if your "Liver Stress" is trending up or down.
+- Inference: This allows the ML to say "Your health is improving compared to last month," which a standard LLM cannot do alone.
+
+5. WHO GUIDELINES: MEDICAL GUARDRAILS
+-------------------------------------
+The Aura Health platform aligns with the World Health Organization (WHO) framework for "Integrated People-Centred Health Services" (IPCHS).
+
+A. PREVENTATIVE FOCUS: 
+The system instructions are tuned to WHO's diagnostic thresholds (e.g., HbA1c > 6.5% triggering 'High Risk' diabetic alerts).
+
+B. STABILIZATION PROTOCOL: 
+The 'Care Guidance' module follows WHO guidelines for temporary stabilization. It is mathematically barred from "prescribing" and is forced to use "Stabilization Verbs" (Ensure, Maintain, Rest, Observe) instead of "Prescription Verbs" (Take, Injection, Dose).
+
+C. GLOBAL ACCESSIBILITY: 
+By supporting Hindi and Telugu, the platform adheres to WHO\u2019s Goal of "Universal Health Coverage" (UHC) by making high-fidelity health intelligence accessible to non-English speaking populations.

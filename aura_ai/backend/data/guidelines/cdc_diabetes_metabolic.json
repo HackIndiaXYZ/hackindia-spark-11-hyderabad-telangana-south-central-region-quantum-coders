@@ -1,0 +1,26 @@
+{
+  "id": "cdc_diabetes_metabolic",
+  "name": "CDC Diabetes & Metabolic Prevention",
+  "version": "2026.04",
+  "aliases": ["CDC Diabetes Prevention", "CDC Diabetes & Metabolic Prevention"],
+  "summary": "Lifestyle-focused diabetes and metabolic risk prevention guidance centered on weight, activity, and nutrition.",
+  "organ_targets": ["heart", "kidneys", "liver", "brain"],
+  "citations": [
+    {
+      "title": "About Prediabetes and Type 2 Diabetes",
+      "organization": "CDC",
+      "url": "https://www.cdc.gov/diabetes/about/about-prediabetes.html"
+    },
+    {
+      "title": "Prevent Type 2 Diabetes",
+      "organization": "CDC",
+      "url": "https://www.cdc.gov/diabetes/prevention/index.html"
+    }
+  ],
+  "evidence_map": {
+    "heart": ["metabolic_risk", "activity", "bmi"],
+    "kidneys": ["metabolic_risk", "weight"],
+    "liver": ["weight", "diet_quality"],
+    "brain": ["metabolic_risk"]
+  }
+}

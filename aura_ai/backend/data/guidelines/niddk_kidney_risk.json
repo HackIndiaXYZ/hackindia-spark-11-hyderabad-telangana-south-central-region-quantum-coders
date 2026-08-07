@@ -1,0 +1,19 @@
+{
+  "id": "niddk_kidney_risk",
+  "name": "NIDDK Kidney Risk",
+  "version": "2026.04",
+  "aliases": ["NIDDK Kidney Risk", "Kidney Risk Framework"],
+  "summary": "Kidney disease risk interpretation emphasizing diabetes, high blood pressure, smoking, and cardiovascular overlap.",
+  "organ_targets": ["kidneys", "heart"],
+  "citations": [
+    {
+      "title": "Chronic Kidney Disease Basics",
+      "organization": "NIDDK",
+      "url": "https://www.niddk.nih.gov/health-information/kidney-disease/chronic-kidney-disease-ckd"
+    }
+  ],
+  "evidence_map": {
+    "kidneys": ["blood_pressure", "smoking", "metabolic_risk"],
+    "heart": ["kidney_heart_overlap"]
+  }
+}

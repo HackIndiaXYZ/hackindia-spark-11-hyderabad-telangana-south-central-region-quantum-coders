@@ -1,0 +1,51 @@
+AURA HEALTH: COMPONENT & MODULE BRIEFING
+
+1. BACKEND MODULES (Python / FastAPI)
+------------------------------------
+
+[auth]
+- Identity Access Management (IAM): Implements JWT (JSON Web Token) authentication.
+- Responsibilities: User registration, secure login, and protecting clinical endpoints from unauthorized access.
+
+[knowledge_store]
+- Document Repository: Manages the storage and indexing of ingested medical records.
+- Responsibilities: Storing text content from PDFs and facilitating RAG (Retrieval Augmented Generation) so the AI can "remember" your medical history.
+
+[pdf_ingestion]
+- Clinical Data Extraction: The technical pipeline that converts raw medical PDFs into biological snapshots.
+- Responsibilities: Uses LLMs to find values like Glucose, Cholesterol, and BP amidst complex laboratory formatting.
+
+[reasoning_engine]
+- AI Orchestration: The central "brain" of the Digital Twin.
+- Sub-components:
+    - llm_writer: Rewrites robotic clinical data into empathetic, actionable narratives.
+    - care_guidance: Generates specific "Immediate Steps" and "Caution Signals" based on health alerts.
+    - projection: Uses predictive algorithms to simulate how your health will trend over 5-10 years based on current data.
+
+[storage]
+- Database Layer: Manages the connection to MongoDB.
+- Responsibilities: Persisting user profiles, health reports, and simulation states across sessions.
+
+[api.py]
+- System Gateway: The central entry point for the frontend.
+- Responsibilities: Orchestrates all module calls, provides the health grade logic, and implements the Google/RapidAPI doctor recommendation engine.
+
+
+2. FRONTEND MODULES (React / TS)
+--------------------------------
+
+[BodySimulator]
+- 3D Visualization: The core "Digital Twin" interactive view.
+- Responsibilities: Anatomical rendering using Three.js, mapping health risks to pulsing organ glows, and handling the semi-transparent "biometric glass" shell aesthetics.
+
+[ReportAnalyzer]
+- Intelligence Center: The interface for medical data ingestion.
+- Responsibilities: Handling PDF drag-and-drop, providing real-time "AI Extraction" status updates, and displaying technical medical findings.
+
+[OrganRiskList / OrganCard]
+- Diagnostic Interface: Converts complex data into simple visual cues.
+- Responsibilities: Displaying the Academic Health Grades (A-F), Vitality scores, and predictive organ metrics.
+
+[useStore.ts]
+- Global State Management: Built with Zustand.
+- Responsibilities: Synchronizing data between the 3D model, the PDF results, and the doctor recommendation system without page refreshes.

@@ -1,0 +1,687 @@
+<USER_REQUEST>
+# AURA Health — Product Architecture Validation & Audit Prompt
+
+You are acting as a **Senior Healthcare Software Architect**, **Health Informatics Expert**, **Clinical Systems Reviewer**, **Full Stack Technical Lead**, and **UX Auditor**.
+
+Your task is **NOT to implement new features**.
+
+Your task is to perform a **complete architecture validation** of the AURA Health project and verify whether every planned redesign has actually been implemented.
+
+---
+
+# Validation Objective
+
+Compare the **actual codebase** against the redesigned architecture.
+
+Do not assume anything.
+
+Only mark an item as completed if it is actually implemented in code.
+
+If something is partially implemented, clearly explain what is missing.
+
+If something is implemented incorrectly, explain why.
+
+Never give generic feedback.
+
+Provide evidence from the codebase.
+
+---
+
+# 1. Wellness Layer Validation
+
+Verify that:
+
+✅ A dedicated Wellness Layer exists.
+
+Verify that it:
+
+* uses only lifestyle data
+* uses only patient intake data
+* never requires laboratory reports
+* never calculates organ clinical assessments
+* never returns fake heart/kidney/liver/lung scores
+
+Expected outputs:
+
+* Wellness Insights
+* Preventive Recommendations
+* Lifestyle Risk Factors
+* Wellness Trends
+
+Report:
+
+PASS / PARTIAL / FAIL
+
+Explain why.
+
+---
+
+# 2. Clinical Layer Validation
+
+Verify that a completely separate Clinical Layer exists.
+
+Confirm that:
+
+Heart assessment requires clinical biomarkers.
+
+Kidney assessment requires laboratory biomarkers.
+
+Liver assessment requires laboratory biomarkers.
+
+Lung assessment requires spirometry.
+
+Brain assessment requires clinical history.
+
+Ensure no module silently falls back to assumptions.
+
+Missing required biomarkers must prevent assessment generation.
+
+Report:
+
+PASS / PARTIAL / FAIL
+
+---
+
+# 3. Clinical Readiness Engine
+
+Verify:
+
+clinical_readiness.py
+
+or equivalent module.
+
+Confirm it returns:
+
+* Waiting
+* Ready
+* Missing Reports
+* Missing Biomarkers
+* Patient-friendly "Why is this waiting?"
+
+Example:
+
+Heart
+
+Waiting
+
+Reason:
+
+Blood Pressure and Lipid Profile are required.
+
+If this explanation does not exist,
+
+mark FAIL.
+
+---
+
+# 4. OCR Validation
+
+Verify OCR pipeline.
+
+Confirm:
+
+Medical Report
+
+↓
+
+OCR
+
+↓
+
+Biomarker Extraction
+
+↓
+
+Biomarker Mapper
+
+↓
+
+Standardized Clinical Keys
+
+↓
+
+Clinical Assessment
+
+Ensure OCR outputs are actually consumed by the assessment engine.
+
+Not merely stored.
+
+Report findings.
+
+---
+
+# 5. Biomarker Mapper Validation
+
+Verify biomarker_mapper.py.
+
+Confirm mappings such as:
+
+Serum Creatinine
+
+↓
+
+serum_creatinine
+
+Blood Pressure
+
+↓
+
+systolic_bp
+
+Total Bilirubin
+
+↓
+
+total_bilirubin
+
+FEV1
+
+↓
+
+fev1_pct_predicted
+
+List all supported mappings.
+
+Identify missing mappings.
+
+---
+
+# 6. Clinical Assessment Engine Validation
+
+Verify:
+
+No assessment runs when required biomarkers are absent.
+
+Check:
+
+Heart
+
+Kidney
+
+Liver
+
+Lungs
+
+Brain
+
+Confirm:
+
+Returns None
+
+or equivalent
+
+instead of fake defaults.
+
+---
+
+# 7. Dashboard Validation
+
+Verify Dashboard UI.
+
+Confirm:
+
+Separate Wellness section.
+
+Separate Clinical section.
+
+Organ cards display:
+
+Waiting
+
+Ready
+
+Digital Twin Active
+
+Confirm fake scores are removed.
+
+Confirm educational explanations exist.
+
+Report screenshots/components if available.
+
+---
+
+# 8. Medical Report Upload Validation
+
+Verify upload workflow.
+
+Confirm:
+
+Organ-specific uploads.
+
+Examples:
+
+Heart
+
+Lipid Profile
+
+Blood Pressure
+
+ECG
+
+Kidney
+
+KFT
+
+Urine Report
+
+Liver
+
+LFT
+
+INR
+
+Lungs
+
+Spirometry
+
+PFT
+
+Verify OCR trigger.
+
+Verify module activation.
+
+---
+
+# 9. QR Passport Validation
+
+Verify all passport levels.
+
+Level 1
+
+Emergency Passport
+
+Contains:
+
+Identity
+
+Blood Group
+
+Allergies
+
+Medications
+
+Emergency Contacts
+
+---
+
+Level 2
+
+Clinical Evidence Passport
+
+Contains:
+
+Uploaded Reports
+
+Module Readiness
+
+Latest Report Date
+
+---
+
+Level 3
+
+Living Digital Twin Passport
+
+Contains:
+
+Clinical Assessments
+
+Confidence
+
+Formula Versions
+
+Timeline
+
+Organization Names
+
+Report any missing fields.
+
+---
+
+# 10. API Validation
+
+Verify endpoints.
+
+Expected:
+
+/v1/wellness-assessment
+
+/v1/health-readiness
+
+/v1/clinical-assessments
+
+/v1/passport
+
+/v1/ingest-pdf
+
+Confirm responses.
+
+Confirm schemas.
+
+---
+
+# 11. Store Validation
+
+Verify frontend state.
+
+Expected:
+
+wellnessData
+
+clinicalReadiness
+
+clinicalAssessments
+
+passportLevel
+
+biomarkers
+
+timeline
+
+Confirm state synchronization.
+
+---
+
+# 12. Rule Engine Validation
+
+Confirm architecture:
+
+Lifestyle
+
+↓
+
+Wellness
+
+↓
+
+Clinical Reports
+
+↓
+
+OCR
+
+↓
+
+Biomarker Mapper
+
+↓
+
+Clinical Assessment Engine
+
+↓
+
+Digital Twin
+
+↓
+
+Timeline
+
+↓
+
+AI Explanation
+
+Ensure AI never computes medical values.
+
+Only explains deterministic outputs.
+
+---
+
+# 13. Organization Validation
+
+Verify UI displays full organization names.
+
+Examples:
+
+Kidney Disease: Improving Global Outcomes (KDIGO)
+
+American Heart Association (AHA)
+
+American College of Cardiology (ACC)
+
+Organ Procurement and Transplantation Network (OPTN)
+
+Global Initiative for Chronic Obstructive Lung Disease (GOLD)
+
+Reject abbreviations-only UI.
+
+---
+
+# 14. Digital Twin Lifecycle Validation
+
+Verify lifecycle:
+
+Health Profile
+
+↓
+
+Wellness
+
+↓
+
+Clinical Readiness
+
+↓
+
+Medical Report Upload
+
+↓
+
+OCR
+
+↓
+
+Clinical Assessment
+
+↓
+
+Digital Twin Activation
+
+↓
+
+Continuous Monitoring
+
+↓
+
+AI Explanation
+
+Identify missing lifecycle stages.
+
+---
+
+# 15. Architecture Consistency Audit
+
+Search entire codebase.
+
+Find:
+
+Old terminology:
+
+Health Score
+
+Organ Score
+
+Fake Score
+
+Risk Score
+
+Immediate Score
+
+Replace validation with:
+
+Clinical Assessment
+
+Clinical Readiness
+
+Digital Twin
+
+Wellness Assessment
+
+Evidence-Based Assessment
+
+List every outdated reference.
+
+---
+
+# 16. Technical Debt Audit
+
+Find:
+
+Dead code
+
+Unused APIs
+
+Duplicate logic
+
+Hardcoded values
+
+Temporary hacks
+
+TODOs
+
+Mock data
+
+Dummy responses
+
+Simulation code
+
+Unused components
+
+List every occurrence.
+
+---
+
+# 17. End-to-End Flow Validation
+
+Verify complete workflow:
+
+Register
+
+↓
+
+Health Profile
+
+↓
+
+Wellness Assessment
+
+↓
+
+Dashboard
+
+↓
+
+Upload Report
+
+↓
+
+OCR
+
+↓
+
+Biomarker Mapping
+
+↓
+
+Clinical Readiness Update
+
+↓
+
+Clinical Assessment
+
+↓
+
+Passport Update
+
+↓
+
+Timeline Update
+
+Identify exactly where the flow breaks if it does.
+
+---
+
+# Final Report Format
+
+Generate a professional audit report.
+
+Use this structure.
+
+Overall Architecture Score
+
+X/10
+
+Clinical Credibility
+
+X/10
+
+Healthcare Workflow
+
+X/10
+
+Backend Architecture
+
+X/10
+
+Frontend Architecture
+
+X/10
+
+Digital Twin Design
+
+X/10
+
+Code Quality
+
+X/10
+
+UX Quality
+
+X/10
+
+Technical Debt
+
+Low / Medium / High
+
+Deployment Readiness
+
+Ready
+
+Minor Fixes Needed
+
+Major Issues
+
+Overall Verdict
+
+Finally produce:
+
+1. Completed Features
+
+2. Partially Implemented Features
+
+3. Missing Features
+
+4. Bugs
+
+5. Recommended Improvements (Highest Priority First)
+
+Do not write generic praise.
+
+Be extremely strict.
+
+Review this project exactly as a hackathon judge, healthcare architect, and senior software engineer would.
+
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-08-06T20:28:42+05:30.
+
+The user's current state is as follows:
+Other open documents:
+- c:\Users\palar\OneDrive\Desktop\digital-twin-health-ai\backend\app\reasoning_engine\gemini_service.py (LANGUAGE_PYTHON)
+- c:\Users\palar\OneDrive\Desktop\digital-twin-health-ai\frontend\aura-health\src\pages\SettingsPage.tsx (LANGUAGE_TSX)
+- c:\Users\palar\OneDrive\Desktop\digital-twin-health-ai\frontend\aura-health\src\App.tsx (LANGUAGE_TSX)
+- c:\Users\palar\OneDrive\Desktop\digital-twin-health-ai\frontend\aura-health\src\pages\Register.tsx (LANGUAGE_TSX)
+- c:\Users\palar\OneDrive\Desktop\digital-twin-health-ai\backend\app\reasoning_engine\care_guidance.py (LANGUAGE_PYTHON)
+</ADDITIONAL_METADATA>
+<USER_SETTINGS_CHANGE>
+The user changed setting `Model Selection` from Gemini 3.6 Flash (Medium) to Gemini 3.1 Pro (Low). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string.
+</USER_SETTINGS_CHANGE>
